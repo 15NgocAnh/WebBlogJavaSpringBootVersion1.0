@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}">
+<meta charset="UTF-8">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<!-- Site wrapper -->
+	<div class="wrapper">
+
+		<header th:replace="~{admin/fragments/header :: header}"></header>
+		<!-- =============================================== -->
+
+		<!-- Left side column. contains the sidebar -->
+		<aside th:replace="~{admin/fragments/sidebar :: sidebar}"></aside>
+		<!-- =============================================== -->
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<ol class="breadcrumb">
+					<li><a href="/admin"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+					<li class="active">Danh sách bài viết</li>
+				</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="box" bis_skin_checked="1">
+					<div class="cf-title-06">
+						<h3>Danh sách bài viết</h3>
+					</div>
+
+					<div class="box-body" bis_skin_checked="1">
+						<div id="example1_wrapper"
+							class="dataTables_wrapper form-inline dt-bootstrap"
+							bis_skin_checked="1">
+							<div class="row" bis_skin_checked="1">
+								<div class="col-sm-4" bis_skin_checked="1">
+									<div class="dataTables_length" id="example1_length"
+										bis_skin_checked="1">
+										<label>Show <select name="example1_length"
+											aria-controls="example1" class="form-control input-sm"><option
+													value="10">10</option>
+												<option value="25">25</option>
+												<option value="50">50</option>
+												<option value="100">100</option></select> entries
+										</label>
+									</div>
+								</div>
+								<div class="col-sm-4" bis_skin_checked="1">
+									<form>
+									<div id="example1_filter" class="dataTables_filter">
+										<input name="keyword" th:value="${keyword}" type="text" id="searchInput"
+											placeholder="Tìm kiếm bài viết">
+										<button type="submit">Tìm kiếm</button>
+										<ul id="results"></ul>
+									</div>
+									</form>
+								</div>
+
+								<div class="col-sm-2" bis_skin_checked="1">
+									<a href="/admin/add-news">
+										<button type="button" class="btn btn-block btn-success">Thêm
+											bài viết</button>
+									</a>
+
+								</div>
+									<div class="col-sm-2 " bis_skin_checked="1">
+										<a href=""
+										   onclick="return confirm('Are you sure?')">
+											<button type="button" class="btn btn-block btn-danger">Xóa
+												bài viết</button>
+										</a>
+									</div>
+							</div>
+							<br />
+							<div class="row" bis_skin_checked="1">
+								<div class="col-sm-12" bis_skin_checked="1">
+									<table id="example1"
+										class="table table-bordered table-striped dataTable"
+										role="grid" aria-describedby="example1_info">
+										<thead class="thead-dark">
+											<tr role="row">
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Browser: activate to sort column ascending">
+													<label class="stardust-checkbox">
+														<input id="checkAll" class="stardust-checkbox__input" type="checkbox"
+															   aria-checked="false" tabindex="0" role="checkbox"
+															   aria-label="Click here to select all" style="width: 20px; height: 20px"
+														><div class="stardust-checkbox__box" bis_skin_checked="1"></div>
+													</label>
+												</th>
+												<th class="sorting_asc" tabindex="0"
+													aria-controls="example1" rowspan="1" colspan="1"
+													aria-sort="ascending"
+													aria-label="Rendering engine: activate to sort column descending"
+													style="width: 80px;">ID</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Browser: activate to sort column ascending"
+													style="width: 267.35px;">Title</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Platform(s): activate to sort column ascending"
+													style="width: 236.975px;">Thumbnail</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Platform(s): activate to sort column ascending"
+													style="width: 236.975px;">Category</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Platform(s): activate to sort column ascending"
+													style="width: 236.975px;">Slug</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Platform(s): activate to sort column ascending"
+													style="width: 236.975px;">Created By</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Platform(s): activate to sort column ascending"
+													style="width: 236.975px;">Created Date</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Platform(s): activate to sort column ascending"
+													style="width: 236.975px;">Modified By</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Platform(s): activate to sort column ascending"
+													style="width: 236.975px;">Modified Date</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="CSS grade: activate to sort column ascending"
+													style="width: 134.9px;">Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<div th:each="news : ${listnews}">
+												<tr role="row" class="odd">
+													<td>
+														<label class="stardust-checkbox">
+															<input class="stardust-checkbox__input checkbox-item" type="checkbox"
+																   aria-checked="false" aria-disabled="false" tabindex="0"
+																   role="checkbox" aria-label="Click here to select"
+															style="width: 20px; height: 20px">
+															<div class="stardust-checkbox__box" bis_skin_checked="1"></div>
+														</label>
+													</td>
+													<td class="sorting_1" th:text="${news.id}"></td>
+													<td th:text="${news.title}"></td>
+													<td>
+														<img class="img-thumbnail" th:src="@{'/uploads/'+${news.thumbnail}}" alt="Thumbnail"/>
+														
+													</td>
+													<td th:text="${news.category.name}"></td>
+													<td th:text="${news.slug}"></td>
+													<td th:text="${news.createdBy}"></td>
+													<td th:text="${news.createdDate}"></td>
+													<td th:text="${news.modifiedBy}"></td>
+													<td th:text="${news.modifiedDate}"></td>
+													<td><a class="pr-1 btn btn-success btn-sm rounded-0"
+														th:href="@{/admin/edit-news/{id}(id=${news.id})}"><i
+															class="fa fa-edit"></i></a> <a
+														class="pr-1 btn btn-danger btn-sm rounded-0"
+														th:href="@{/admin/delete-news/{id}(id=${news.id})}"
+														onclick="return confirm('Are you sure?')"><i
+															class="fa fa-trash"></i></a></td>
+												</tr>
+											</div>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="row" bis_skin_checked="1">
+								<div class="col-sm-5" bis_skin_checked="1">
+									<div class="dataTables_info" id="example1_info" role="status"
+										aria-live="polite" bis_skin_checked="1">Showing 1 to 10
+										of 57 entries</div>
+								</div>
+								<div class="col-sm-7" bis_skin_checked="1">
+									<div class="dataTables_paginate paging_simple_numbers"
+										id="example1_paginate" bis_skin_checked="1">
+										<ul class="pagination">
+											<li th:classappend="${currentPage <= 1 ? 'disabled' : ''}" class="paginate_button previous" id="previousButton">
+												<a th:href="@{'?page='+${currentPage-1}}" aria-controls="example2" data-dt-idx="0" tabindex="0">Previous</a>
+											</li>
+
+											<li th:each="i : ${#numbers.sequence(1, totalPages)}" class="paginate_button" th:classappend="${i == currentPage ? 'active' : ''}">
+												<a th:href="@{${keyword != null && keyword!='' ? '?keyword='+keyword +'&' : '?'}+'page='+${i}}" aria-controls="example1" data-dt-idx="1" tabindex="0" th:text="${i}"></a>
+											</li>
+
+											<li th:classappend="${currentPage >= totalPages ? 'disabled' : ''}" class="paginate_button next" id="nextButton">
+												<a th:href="@{'?page='+${currentPage+1}}" aria-controls="example2" data-dt-idx="7"
+												tabindex="0">Next</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<footer th:replace="~{admin/fragments/footer :: footer}"></footer>
+
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- jQuery 3 -->
+	<div th:replace="~{admin/fragments/scripts :: scripts}"></div>
+	<script>
+		function searchCategories() {
+		    var keyword = document.getElementById("searchInput").value;
+			fetch('/admin/category/search/' + keyword)
+				.then(response => response.json())
+				.then(data => {
+					var results = document.getElementById("results");
+					results.innerHTML = '';
+					data.forEach(category => {
+						var li = document.createElement("li");
+						li.textContent = category.name;
+						results.appendChild(li);
+					});
+				})
+				.catch(error => console.error('Lá»—i:', error));
+		}
+	</script>
+
+	<script>
+		document.getElementById('previousButton').addEventListener('click', function(event) {
+            if (this.classList.contains('disabled')) {
+                event.preventDefault(); // Ngăn người dùng điều hướng khi nút bị vô hiệu hóa
+            }
+        });
+		document.getElementById('nextButton').addEventListener('click', function(event) {
+            if (this.classList.contains('disabled')) {
+                event.preventDefault(); // Ngăn người dùng điều hướng khi nút bị vô hiệu hóa
+            }
+        });
+	</script>
+
+	<script>
+		// Lấy các checkbox và phần tử "Chọn tất cả" từ DOM
+        const checkAll = document.getElementById('checkAll');
+        const checkboxes = document.querySelectorAll('.checkbox-item');
+
+        // Bắt đầu theo dõi sự kiện khi checkbox "Chọn tất cả" được thay đổi
+        checkAll.addEventListener('change', function () {
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = checkAll.checked;
+            });
+        });
+
+        // Bắt đầu theo dõi sự kiện khi các checkbox con được thay đổi
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                // Kiểm tra xem tất cả checkbox con có được chọn hay không
+                const allChecked = Array.from(checkboxes).every(function (item) {
+                    return item.checked;
+                });
+
+                // Cập nhật trạng thái của checkbox "Chọn tất cả"
+                checkAll.checked = allChecked;
+            });
+        });
+	</script>
+</body>
+</html>

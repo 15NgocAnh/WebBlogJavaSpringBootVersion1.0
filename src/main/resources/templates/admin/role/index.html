@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}">
+<meta charset="UTF-8" />
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<!-- Site wrapper -->
+	<div class="wrapper">
+
+		<header th:replace="~{admin/fragments/header :: header}"></header>
+		<!-- =============================================== -->
+
+		<!-- Left side column. contains the sidebar -->
+		<aside th:replace="~{admin/fragments/sidebar :: sidebar}"></aside>
+		<!-- =============================================== -->
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<ol class="breadcrumb">
+					<li><a href="/admin"><i class="fa fa-dashboard"></i>Trang
+							chủ</a></li>
+					<li class="active">Danh sách vai trò</li>
+				</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="box" bis_skin_checked="1">
+					<div class="cf-title-06">
+						<h3>Danh sách vai trò</h3>
+					</div>
+
+					<div class="box-body" bis_skin_checked="1">
+						<div id="example1_wrapper">
+							<div class="row" bis_skin_checked="1">
+								<div class="col-sm-12" bis_skin_checked="1">
+									<table id="example1"
+										class="table table-bordered table-striped dataTable"
+										role="grid" aria-describedby="example1_info">
+										<thead>
+											<tr role="row">
+												<th class="sorting_asc" tabindex="0"
+													aria-controls="example1" rowspan="1" colspan="1"
+													aria-sort="ascending"
+													aria-label="Rendering engine: activate to sort column descending"
+													style="width: 80px;">ID</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Browser: activate to sort column ascending"
+													style="width: 267.35px;">Role Name</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Platform(s): activate to sort column ascending"
+													style="width: 236.975px;">Created By</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Engine version: activate to sort column ascending"
+													style="width: 236.975px;">Created Date</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Engine version: activate to sort column ascending"
+													style="width: 236.975px;">Updated By</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Engine version: activate to sort column ascending"
+													style="width: 236.975px;">Updated Date</th>
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="CSS grade: activate to sort column ascending"
+													style="width: 134.9px;">Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="role : ${roles}" role="row" class="odd">
+												<td th:text="${role.id}"></td>
+												<td th:text="${role.name}"></td>
+												<td th:text="${role.createdBy}"></td>
+												<td th:text="${role.createdDate}"></td>
+												<td th:text="${role.modifiedBy}"></td>
+												<td th:text="${role.modifiedDate}"></td>
+												<td><a class="pr-1 btn btn-success btn-sm rounded-0"
+													th:href="@{/admin/edit-role/{id}(id=${role.id})}"><i class="fa fa-edit"></i></a> <a
+													class="pr-1 btn btn-danger btn-sm rounded-0" th:href="@{/admin/delete-role/{id}(id=${role.id})}"
+													onclick="return confirm('Are you sure?')"><i
+														class="fa fa-trash"></i></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<footer th:replace="~{admin/fragments/footer :: footer}"></footer>
+
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- jQuery 3 -->
+	<div th:replace="~{admin/fragments/scripts :: scripts}"></div>
+
+</body>
+</html>

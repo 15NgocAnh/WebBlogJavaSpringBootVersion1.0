@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{admin/fragments/head :: head}">
+<meta charset="UTF-8">
+</head>
+
+
+<body class="hold-transition login-page">
+	<div class="login-box">
+		<div class="login-logo">
+			<a href="../../index2.html"><b>Admin</b>LTE</a>
+		</div>
+		<div class="login-box-body" bis_skin_checked="1">
+			<p class="login-box-msg">Sign in to start your session</p>
+			<form th:action="@{/login}" method="post">
+				<div class="form-group has-feedback" bis_skin_checked="1">
+					<input type="text" class="form-control" placeholder="Username" name="username"/>
+					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback" bis_skin_checked="1">
+					<input type="password" class="form-control" placeholder="Password" name="password">
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<div class="row" bis_skin_checked="1">
+					<div class="col-xs-8" bis_skin_checked="1">
+						<div class="checkbox icheck" bis_skin_checked="1">
+							<label style="padding-left: 20px"><input type="checkbox"/>Remember Me
+							</label>
+						</div>
+					</div>
+
+					<div class="col-xs-4" bis_skin_checked="1">
+						<button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+
+	<div th:replace="~{admin/fragments/scripts :: scripts}"></div>
+	<script>
+		$(function() {
+			$('input').iCheck({
+				checkboxClass : 'icheckbox_square-blue',
+				radioClass : 'iradio_square-blue',
+				increaseArea : '20%' /* optional */
+			});
+		});
+	</script>
+</body>
+</html>

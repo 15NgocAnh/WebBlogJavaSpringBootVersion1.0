@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{admin/fragments/head :: head}">
+<meta charset="UTF-8" />
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<!-- Site wrapper -->
+	<div class="wrapper">
+
+		<header th:replace="~{admin/fragments/header :: header}"></header>
+		<!-- =============================================== -->
+
+		<!-- Left side column. contains the sidebar -->
+		<aside th:replace="~{admin/fragments/sidebar :: sidebar}"></aside>
+		<!-- =============================================== -->
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<ol class="breadcrumb">
+					<li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li class="active">Thông tin cá nhân</li>
+				</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="alert alert-success alert-dismissible" bis_skin_checked="1" th:if="${param.message != null}">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+					<h4><i class="icon fa fa-check"></i> Alert!</h4>
+					Đã thay đổi mật khẩu thành công!
+				</div>
+				<div class="container rounded bg-white mt-5 mb-5">
+					<div class="row">
+						<div class="col-md-3 border-right">
+							<div
+								class="d-flex flex-column align-items-center text-center p-3 py-5">
+								<img class="rounded-circle mt-5" width="150px"
+									src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+								<span class="font-weight-bold"
+									th:text="${userDetails.firstname} + ' ' + ${userDetails.lastname}"></span>
+								<span class="text-black-50" th:text="${userDetails.email}"></span>
+								<span th:each="role : ${userDetails.roles}"
+									th:text="${role.name} + ' '"> </span>
+							</div>
+						</div>
+						<div class="col-md-5 border-right">
+								<div class="p-3 py-5">
+									<div
+										class="d-flex justify-content-between align-items-center mb-3">
+										<h4 class="text-right">Thông tin cá nhân</h4>
+									</div>
+									<div class="row mt-2">
+										<div class="col-md-6">
+											<label class="labels">First name</label><input type="text"
+												class="form-control" th:value="${userDetails.firstname}"
+												th:field="*{userDetails.firstname}" />
+										</div>
+										<div class="col-md-6">
+											<label class="labels">Last name</label><input type="text"
+												class="form-control" th:value="${userDetails.lastname}"
+												th:field="*{userDetails.lastname}">
+										</div>
+									</div>
+									<div class="row mt-3">
+										<div class="col-md-12">
+											<label class="labels">Phone Number</label><input type="text"
+												class="form-control" th:value="${userDetails.phone}"
+												th:field="*{userDetails.phone}">
+										</div>
+										<div class="col-md-12">
+											<label class="labels">Address</label><input type="text"
+												class="form-control" th:value="${userDetails.address}"
+												th:field="*{userDetails.address}">
+										</div>
+										<div class="col-md-12">
+											<label class="labels">Email</label><input type="text"
+												class="form-control" th:value="${userDetails.email}"
+												th:field="*{userDetails.email}">
+										</div>
+										<div class="col-md-12">
+											<label class="labels">Gender</label>
+											<input th:if="${userDetails.gender}" type="text" class="form-control" value="Nam" readonly="readonly">
+											<input th:if="${!userDetails.gender}" type="text" class="form-control" value="Nữ" readonly="readonly">
+										</div>
+										<div class="col-md-12">
+											<label class="labels">Birthday</label><input type="date"
+												class="form-control" th:value="${userDetails.birthday}" date-form="dd-MM-yyyy"
+												th:field="*{userDetails.birthday}">
+										</div>
+									</div>
+									<div class="mt-5 text-center">
+										<button class="btn btn-primary profile-button" type="submit">Update
+											Profile</button>
+									</div>
+								</div>
+						</div>
+
+						<div class="col-md-4">
+							<form method="post" th:action="@{/admin/change-password}">
+								<div class="p-3 py-5">
+									<div
+											class="d-flex justify-content-between align-items-center experience">
+										<h4>Đổi mật khẩu</h4>
+									</div>
+									<br>
+									<div class="col-md-12 position-relative">
+										<label class="labels">Mật khẩu cũ</label>
+										<input type="password" id="oldPassword" class="form-control" name="oldPassword" placeholder="Nhập mật khẩu của bạn" required>
+										<span toggle="#password" class="eye-icon fa fa-eye"></span>
+									</div>
+									<br>
+									<div class="col-md-12">
+										<label class="labels">Mật khẩu mới</label>
+										<input type="password" id="newPassword" class="form-control" name="newPassword" placeholder="Nhập mật khẩu mới" required>
+										<span toggle="#password" class="eye-icon fa fa-eye"></span>
+									</div>
+									<br>
+									<div class="col-md-12 mt-5 text-center">
+										<button class="btn btn-primary profile-button" type="submit">Đổi mật khẩu</button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+
+					</div>
+				</div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<footer th:replace="~{admin/fragments/footer :: footer}"></footer>
+
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- jQuery 3 -->
+	<div th:replace="~{admin/fragments/scripts :: scripts}"></div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+        const passwordInput = document.getElementById('oldPassword');
+        const eyeIcon = document.querySelector('.eye-icon');
+
+        eyeIcon.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        	});
+    	});
+
+		document.addEventListener('DOMContentLoaded', function () {
+        const passwordInput = document.getElementById('newPassword');
+        const eyeIcon = document.querySelector('.eye-icon');
+
+        eyeIcon.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        	});
+    	});
+	</script>
+</body>
+</html>

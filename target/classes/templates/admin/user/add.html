@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}">
+<meta charset="UTF-8">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<!-- Site wrapper -->
+	<div class="wrapper">
+
+		<header th:replace="~{admin/fragments/header :: header}"></header>
+		<!-- =============================================== -->
+
+		<!-- Left side column. contains the sidebar -->
+		<aside th:replace="~{admin/fragments/sidebar :: sidebar}"></aside>
+		<!-- =============================================== -->
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<ol class="breadcrumb">
+					<li><a href="/admin"><i class="fa fa-dashboard"></i>Trang
+							chủ</a></li>
+					<li><a href="/admin/user">Danh sách tài khoản</a></li>
+					<li class="active">Thêm mới tài khoản</li>
+				</ol>
+			</section>
+
+			<section class="content">
+				<div class="row">
+					<div class="box box-primary">
+						<div class="cf-title-06">
+							<h3>Thêm tài khoản mới</h3>
+						</div>
+						<form method="post" th:action="@{/admin/add-user}" th:object="${user}">
+							<div class="box-body">
+								<div class="col-md-6">
+									<div class="form-group" bis_skin_checked="1">
+										<label>Username</label>
+										<div class="input-group" bis_skin_checked="1">
+											<div class="input-group-addon" bis_skin_checked="1">
+												<i class="fa fa-user"></i>
+											</div>
+											<input th:field="*{username}" type="text" class="form-control" placeholder="Enter Username"/>
+										</div>
+									</div>
+
+									<div class="form-group" bis_skin_checked="1">
+										<label>Full Name</label>
+										<div class="row">
+											<div class="col-md-8">
+												<div class="input-group" bis_skin_checked="1">
+													<div class="input-group-addon" bis_skin_checked="1">
+														<i class="fa fa-heart"></i>
+													</div>
+													<input th:field="*{firstname}" type="text" class="form-control" placeholder="Enter First Name"/>
+												</div>
+											</div>
+											<div class="col-md-3" style="padding:0px">
+													<input th:field="*{lastname}" type="text" class="form-control" placeholder="Enter Last Name"/>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group" bis_skin_checked="1">
+										<label>Gender</label>
+										<div class="row">
+											<div class="col-md-3 form-check">
+												<input th:field="*{gender}" value="1" type="radio" class="form-check-input" id="radio1"
+													name="optradio" checked> <label
+													class="form-check-label" for="radio1">Male</label>
+											</div>
+											<div class="col-md-3 form-check">
+												<input th:field="*{gender}" value="0" type="radio" class="form-check-input" id="radio2"
+													name="optradio"> <label
+													class="form-check-label" for="radio2">Female</label>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group" bis_skin_checked="1">
+										<label>BirthDay</label>
+										<div class="input-group" bis_skin_checked="1">
+											<div class="input-group-addon" bis_skin_checked="1">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<input th:field="*{birthday}" type="date" class="form-control" data-inputmask="'alias': 'yyyy-MM-dd'">
+										</div>
+									</div>
+
+									<div class="form-group" bis_skin_checked="1">
+										<label>Avatar</label>
+										<div class="input-group" bis_skin_checked="1">
+											<input th:field="*{avatar}" type="file" class="form-control" id="avatar"
+													name="fileImage" /> <img id="imagePreview" src=""
+													alt="Image Preview" style="max-width: 200px; display: none;" />
+										</div>
+									</div>
+
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group" bis_skin_checked="1">
+										<label>Phone Number</label>
+										<div class="input-group" bis_skin_checked="1">
+											<div class="input-group-addon" bis_skin_checked="1">
+												<i class="fa fa-phone"></i>
+											</div>
+											<input th:field="*{phone}" type="text" class="form-control" placeholder="Enter Your Phone Number"/>
+										</div>
+									</div>
+
+									<div class="form-group" bis_skin_checked="1">
+										<label>Address</label>
+										<div class="input-group" bis_skin_checked="1">
+											<div class="input-group-addon" bis_skin_checked="1">
+												<i class="fa fa-map"></i>
+											</div>
+											<input th:field="*{address}" type="text" class="form-control" placeholder="Enter Your Address"/>
+										</div>
+									</div>
+
+									<div class="form-group" bis_skin_checked="1">
+										<label>Email</label>
+										<div class="input-group" bis_skin_checked="1">
+											<div class="input-group-addon" bis_skin_checked="1">
+												<i class="glyphicon glyphicon-envelope"></i>
+											</div>
+											<input th:field="*{email}" type="email" class="form-control" placeholder="YourEmail@example.com"/>
+										</div>
+									</div>
+
+									<div class="form-group" bis_skin_checked="1">
+										<label>Role</label>
+										<select th:field="*{roles}" multiple="multiple" name="roles" class="form-control select2 select2-hidden-accessible js-example-basic-multiple" data-placeholder="Select a Role" style="width: 100%;" tabindex="-1" aria-hidden="true">
+											<th:block th:each="role : ${roles}">
+												<option th:value="${role.id}" th:text="${role.name}"></option>
+											</th:block>
+										</select>
+									</div>
+
+									<div class="form-group" bis_skin_checked="1">
+										<label>Status</label>
+										<div class="form-check" bis_skin_checked="1">
+											<input th:field="*{status}" class="form-check-input" type="radio" value="1" checked/>
+											<label class="form-check-label">
+												<span class="badge badge-success">Enabled</span>
+											</label>
+										</div>
+										<div class="form-check" bis_skin_checked="1">
+											<input th:field="*{status}" class="form-check-input" type="radio" value="0"/>
+											<label class="form-check-label">
+												<span class="badge badge-danger">Disabled</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="box-footer" bis_skin_checked="1">
+								<button type="submit" class="btn btn-primary">Save User</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+
+		</div>
+		<!-- /.content-wrapper -->
+
+		<footer th:replace="~{admin/fragments/footer :: footer}"></footer>
+
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- jQuery 3 -->
+	<div th:replace="~{admin/fragments/scripts :: scripts}"></div>
+	//Hiển thị ảnh chọn (preview) trước khi upload
+	<script>
+		const imageInput = document.getElementById('avatar');
+		const imagePreview = document.getElementById('imagePreview');
+
+		imageInput.addEventListener('change', function() {
+			if (imageInput.files && imageInput.files[0]) {
+				const reader = new FileReader();
+
+				reader.onload = function(e) {
+					imagePreview.src = e.target.result;
+					imagePreview.style.display = 'block';
+				};
+
+				reader.readAsDataURL(imageInput.files[0]);
+			}
+		});
+	</script>
+	<script>
+		$(document).ready(function() {
+    		$('.js-example-basic-multiple').select2();
+		});
+	</script>
+</body>
+</html>

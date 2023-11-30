@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{admin/fragments/head :: head}"> <meta charset="UTF-8"/> </head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+	<header th:replace="~{admin/fragments/header :: header}"></header>
+  <!-- =============================================== -->
+
+  <!-- Left side column. contains the sidebar -->
+  <aside th:replace="~{admin/fragments/sidebar :: sidebar}"></aside>
+  <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Trang chủ
+        <small>it all starts here</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+      	<br/>
+        	<h2>Chào mừng đến với trang quản trị!</h2>
+        <br/>
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer th:replace="~{admin/fragments/footer :: footer}"></footer>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<div th:replace="~{admin/fragments/scripts :: scripts}"></div>
+</body>
+</html>

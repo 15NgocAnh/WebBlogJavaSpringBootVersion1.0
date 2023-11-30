@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragments/head :: head}">
+<meta charset="UTF-8" />
+</head>
+<body>
+	<div th:id="preloader">
+		<img class="preloader" th:src="@{/WebAssets/images/loader.gif}" alt="" />
+	</div>
+	<!-- end loader -->
+	<!-- END LOADER -->
+
+	<div id="wrapper">
+
+		<header th:replace="~{fragments/header :: header}"></header>
+
+		<section>
+			<div class="container">
+				<div class="row d-flex flex-row justify-content-between">
+					<div
+						class="col-lg-7 col-md-6 col-sm-12 col-xs-12 swiper mySwiper rounded">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide d-block w-100"
+								style="text-align: justify" th:each="itemNews : ${top5news}">
+								<div class="container-fluid">
+									<div class="masonry-blog clearfix">
+										<div class="left-side">
+											<div style="height: 350px" class="mySlides masonry-box">
+												<div class="shadoweffect ">
+													<img style="object-fit: cover"
+														th:src="@{'/uploads/'+${itemNews.thumbnail}}" alt="" />
+													<div class="shadow-desc ">
+														<div class="blog-meta bg-dark bg-opacity-50">
+															<span class="bg-aqua"><a
+																href="blog-category-01.html" title=""
+																th:text="${itemNews.category.name}"></a></span>
+															<h4>
+																<a th:href="@{'/post/' + ${itemNews.slug}}" title=""
+																	th:text="${itemNews.title}"></a>
+															</h4>
+															<small><a th:text="${itemNews.createdDate}"
+																th:href="@{single.html}"></a></small> <small><a
+																th:text="'By '+${itemNews.createdBy}" href="#"></a></small>
+														</div>
+														<!-- end meta -->
+													</div>
+													<!-- end shadow-desc -->
+												</div>
+												<!-- end shadow -->
+											</div>
+											<!-- end post-media -->
+										</div>
+										<!-- end left-side -->
+									</div>
+									<!-- end masonry -->
+								</div>
+							</div>
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+
+					<div class="widget col-lg-5 col-md-6 col-sm-12 col-xs-12">
+						<h2 class="widget-title">Bài viết nổi bật</h2>
+						<div class="blog-list-widget"
+							style="position: relative; overflow: auto; height: 300px;">
+							<div class="list-group ">
+								<a th:each="item : ${top5news}"
+									th:href="@{'/post/'+${item.slug}}"
+									class="list-group-item list-group-item-action flex-column align-items-start ">
+									<div class="w-100 justify-content-between">
+										<img th:src="@{'/uploads/'+${item.thumbnail}}" alt="thumbnail"
+											class="img-fluid float-left" />
+										<h5 class="mb-1 color-pink-hover" th:text="${item.title}"></h5>
+										<small th:text="${item.createdDate}"></small>
+									</div>
+								</a>
+							</div>
+						</div>
+						<!-- end blog-list -->
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1">
+						<div class="banner-spot clearfix">
+							<div class="banner-img">
+								<img th:src="@{/WebAssets/images/quang-cao.jpg}" alt=""
+									class="img-fluid" />
+							</div>
+							<!-- end banner-img -->
+						</div>
+						<!-- end banner -->
+					</div>
+					<!-- end col -->
+				</div>
+				<!-- end row -->
+
+				<hr class="invis1" />
+
+				<div class="row" style="align-items:center;">
+					<div class="col-lg-9">
+						<h1 class="widget-title">Bài mới mỗi ngày</h1>
+					</div>
+					<div class="col-sm-3" bis_skin_checked="1">
+						<form>
+							<div class="search-container">
+								<input style="background: none;" type="text" name="keyword" th:value="${keyword}" placeholder="Tìm kiếm bài viết..."
+									class="search-input">
+									<button style="border: none; background: none;" type="submit"> <i class="fas fa-search"></i> </button>
+							</div>
+						</form>
+					</div>
+
+					<div id="searchResults" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="page-wrapper">
+							<div class="portfolio row isotope"
+								style="position: relative; overflow: auto; height: 1063px;">
+								<div th:each="post : ${news}"
+									class="pitem item-w1 item-h1 isotope-item"
+									style="width: 370px; height: 375px; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+									<div class="blog-box">
+										<div class="post-media rounded">
+											<img th:src="@{'/uploads/'+${post.thumbnail}}"
+												alt="thumbnail" class="img-fluid">
+											<div class="hovereffect">
+												<span></span>
+											</div>
+											<!-- end hover -->
+										</div>
+										<!-- end media -->
+										<div class="blog-meta">
+											<span class="bg-grey"><a href="blog-category-01.html"
+												title="" th:text="${post.category.name}"></a></span>
+											<h4>
+												<a th:href="@{'/post/'+${post.slug}}" title=""
+													th:text="${post.title}"></a>
+											</h4>
+											<p
+												style="font-size: 12px; line-height: 17px; margin-top: 3px; margin-bottom: 3px; height: 50px; overflow: hidden; text-overflow: ellipsis;"
+												th:text="${post.meta}"></p>
+											<small><a href="blog-author.html" title=""
+												th:text="'By '+${post.createdBy}"></a> </small> <small><a
+												href="blog-category-01.html" title=""
+												th:text="${post.createdDate}"></a></small>
+										</div>
+										<!-- end meta -->
+									</div>
+									<!-- end blog-box -->
+								</div>
+								<!-- end col -->
+							</div>
+							<!-- end portfolio -->
+						</div>
+						<!-- end page-wrapper -->
+
+						<hr class="invis">
+
+						<div class="row">
+							<div class="col-lg-10 offset-lg-1">
+								<div class="banner-spot clearfix">
+									<div class="banner-img">
+										<img th:src="@{/WebAssets/images/quang-cao.jpg}" alt=""
+											 class="img-fluid" />
+									</div>
+									<!-- end banner-img -->
+								</div>
+								<!-- end banner -->
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+					</div>
+					<!-- end col -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</section>
+
+		<footer th:replace="~{fragments/footer :: footer}"></footer>
+		<button class="dmtop">Scroll to Top</button>
+
+	</div>
+	<!-- end wrapper -->
+
+	<!-- Core JavaScript
+    ================================================== -->
+	<div th:replace="~{fragments/scripts :: scripts}"></div>
+	<!-- Swiper JS -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+	<!-- Initialize Swiper -->
+	<script>
+		var swiper = new Swiper(".mySwiper", {
+			cssMode : true,
+			navigation : {
+				nextEl : ".swiper-button-next",
+				prevEl : ".swiper-button-prev",
+			},
+			pagination : {
+				el : ".swiper-pagination",
+			},
+			mousewheel : true,
+			keyboard : true,
+
+			autoplay : {
+				delay : 5000, // Thời gian chuyển slide (ms)
+				disableOnInteraction : false, // Tắt tự động chuyển slide khi người dùng tương tác
+			},
+		});
+	</script>
+</body>
+</html>

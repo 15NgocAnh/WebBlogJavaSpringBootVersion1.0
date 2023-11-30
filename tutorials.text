@@ -1,0 +1,37 @@
+@RequestMapping
+List.of(…): Danh sách chuỗi, đối tượng,…
+Constructor
+H2 DB = In-memory Database: Dùng để test database trước khi connect vào sql
+Annotation:
+	@Configuration: Chứa các method là @Bean method (sẽ khởi tạo ngay khi ứng dụng chạy)
+	@Bean: Khởi tạo database, khởi tạo biến môi trường,…
+Repository: Nơi chứa các hàm để lấy data về như trong memory, mysql,…
+    Logger logger = LoggerFactory.getLogger(UserService.class); //Thay thế cho system.out.println
+        @Bean
+            CommandLineRunner initDatabase(UserRepository userRepository) { //Khởi tạo database
+                new CommandLineRunner() {
+                    @Override
+                    public void run(String... args) throws Exception {
+                        userRepository.save(new User("user1", "pass1"));
+                        userRepository.save(new User("user2", "pass2"));
+                    }
+                }
+            }
+	Extend JpaRepository<Entity,id> ex: <Product,Long>
+DI = Dependency Injection
+    @Autowired
+    private UserRepository userRepository;
+    Annotation @Autowired sẽ giúp cho đối tượng UserRepository khởi tạo ngay khi ứng dụng được chạy,
+        nó sẽ ở đó và cứ thể lấy ra dùng
+Return an object with: data, message, status
+
+Calculated field: transient, không có trong sql
+    @Transient
+    private String age; //Tính từ Birthday
+
+@GeneratedValue(strategy = GenerationType.AUTO,
+    nullable = true //Không cho phép null
+    unique = true //Không cho phép trùng nhau
+@SequenceGenerator(name = "user_sequence",
+    sequenceName = "user_sequence",
+    allocationSize = 1 )//tăng 1

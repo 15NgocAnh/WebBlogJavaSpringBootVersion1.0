@@ -1,0 +1,152 @@
+.box-tools .breadcrumb{
+	margin-bottom: 0;
+	padding: 5px;
+	background: none;
+}
+.box-tools .breadcrumb li{
+	margin-right: 15px;
+	float: left
+}
+.box-tools .breadcrumb li a{
+	color: #333
+}
+
+.content-header > .breadcrumb{
+	padding: 0 7px
+}
+.content .panel-body{
+	padding: 5px
+}
+.table-form .form-inline .input-group>.form-control{
+	width: 300px;
+}
+.panel-pagination .panel-body{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.post-category{
+	padding-left: 0
+}
+.post-category ul{
+	padding-left: 15px
+}
+.btn-social{
+	padding-left: 32px
+}
+.btn-social > :first-child {
+    width: 32px;
+    line-height: 32px;
+    font-size: 16px;
+}
+.table-action a.label{
+	margin-left: 5px
+}
+
+table.dataTable thead .sorting_asc:after {
+    content: "\e155";
+}
+
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: block;
+    font-family: 'Glyphicons Halflings';
+    opacity: 0.5;
+}
+
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled {
+    cursor: pointer;
+    position: relative;
+}
+
+/* ===CODFE HEADING STYLE #6 === */
+.cf-title-06 h3 {
+  text-align: center;
+  color:#222; font-size:30px; font-weight:400;
+  text-transform: uppercase;
+  word-spacing: 1px; letter-spacing:2px; color:#c50000;
+  font-weight: bold;
+}
+
+.mce-toc {
+  border: 1px solid gray;
+}
+
+.mce-toc h2 {
+  margin: 4px;
+}
+
+.mce-toc li {
+  list-style-type: none;
+}
+
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+.eye-icon {
+    position: absolute;
+    top: 57%;
+    right: 25px;
+    cursor: pointer;
+}
+
+.panel-actions {
+  margin-top: -20px;
+  margin-bottom: 0;
+  text-align: right;
+}
+.panel-actions a {
+  color:#333;
+}
+.panel-fullscreen {
+    display: block;
+    z-index: 9999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: auto;
+}

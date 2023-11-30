@@ -1,0 +1,39 @@
+<div th:fragment="scripts">
+
+	<script th:src="@{/adminAssets/js/angular.min.js}"></script>
+	<script th:src="@{/adminAssets/js/app.js}"></script>
+	<script th:src="@{/adminAssets/js/jquery.min.js}"></script>
+	<script th:src="@{/adminAssets/js/jquery-ui.js}"></script>
+	<script th:src="@{/adminAssets/js/bootstrap.min.js}"></script>
+	<script th:src="@{/adminAssets/js/adminlte.min.js}"></script>
+	<script th:src="@{/adminAssets/js/dashboard.js}"></script>
+	<script th:src="@{/adminAssets/js/function.js}"></script>
+	<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js}" referrerpolicy="origin"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/@tinymce/tinymce-jquery@1/dist/tinymce-jquery.min.js}"></script>
+    <script th:src="@{https://cdn.tiny.cloud/1/utn5c8sg05zv25zs2mk64bq3eec6752j0mhx491zfdki17p9/tinymce/6/tinymce.min.js}" referrerpolicy="origin"></script>
+	<script th:src="@{https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js}"></script>
+	<script>
+		$(document).ready(function () {
+    //Toggle fullscreen
+    $("#panel-fullscreen").click(function (e) {
+        e.preventDefault();
+
+        var $this = $(this);
+
+        if ($this.children('i').hasClass('glyphicon-resize-full'))
+        {
+            $this.children('i').removeClass('glyphicon-resize-full');
+            $this.children('i').addClass('glyphicon-resize-small');
+        }
+        else if ($this.children('i').hasClass('glyphicon-resize-small'))
+        {
+            $this.children('i').removeClass('glyphicon-resize-small');
+            $this.children('i').addClass('glyphicon-resize-full');
+        }
+        $(this).closest('.panel').toggleClass('panel-fullscreen');
+    });
+});
+
+	</script>
+</div>

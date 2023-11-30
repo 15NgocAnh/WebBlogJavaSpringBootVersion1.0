@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragments/head :: head}">
+<meta charset="UTF-8" />
+</head>
+<body>
+	<div th:id="preloader">
+		<img class="preloader" th:src="@{/WebAssets/images/loader.gif}" alt="" />
+	</div>
+	<!-- end loader -->
+	<!-- END LOADER -->
+
+	<div id="wrapper">
+
+		<header th:replace="~{fragments/header :: header}"></header>
+
+		<section class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="page-wrapper">
+							<div class="notfound">
+								<div class="row">
+									<div class="col-md-8 offset-md-2 text-center">
+										<h2>404</h2>
+										<h3>Oh no! Page Not Found</h3>
+										<p>The page you are looking for no longer exists. Perhaps
+											you can return back to the site's homepage and see if you can
+											find what you are looking for. Or, you can try finding it
+											with the information below.</p>
+										<a th:href="@{/}" class="btn btn-primary">Back to Home</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end page-wrapper -->
+					</div>
+					<!-- end col -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</section>
+
+		<footer th:replace="~{fragments/footer :: footer}"></footer>
+		<button class="dmtop">Scroll to Top</button>
+
+	</div>
+	<!-- end wrapper -->
+
+	<!-- Core JavaScript
+    ================================================== -->
+	<div th:replace="~{fragments/scripts :: scripts}"></div>
+
+</body>
+</html>

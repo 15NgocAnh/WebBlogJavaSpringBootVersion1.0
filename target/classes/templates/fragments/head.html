@@ -1,0 +1,43 @@
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title th:text="${titleWeb != null ? titleWeb : 'Leehehe'}"></title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    
+    <!-- Site Icons -->
+    <link rel="shortcut icon" th:href="@{/WebAssets/images/favicon.ico}" type="image/x-icon" />
+    <link rel="apple-touch-icon" th:href="@{/WebAssets/images/apple-touch-icon.png}"/>
+    
+    <!-- Design fonts -->
+    <link th:href="@{https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,500,700}" rel="stylesheet"/>
+    <link th:href="@{https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900}" rel="stylesheet"/>
+    
+    <link th:href="@{https://use.fontawesome.com/releases/v5.6.1/css/all.css}" rel="stylesheet">
+   	<link th:href="@{https://fonts.googleapis.com/css2?family=Lato&display=swap}" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/WebAssets/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/WebAssets/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!-- FontAwesome Icons core CSS -->
+    <link th:href="@{/WebAssets/css/font-awesome.min.css}" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/WebAssets/css/style.css}" rel="stylesheet"/>
+
+    <!-- Responsive styles for this template -->
+    <link th:href="@{/WebAssets/css/responsive.css}" rel="stylesheet"/>
+
+    <!-- Colors for this template -->
+    <link th:href="@{/WebAssets/css/colors.css}" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!--[if lt IE 9]>
+      <script th:src="@{https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js}"></script>
+      <script th:src="@{https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js}"></script>
+    <![endif]-->
+	
+</head>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+<meta charset="UTF-8" />
+</head>
+<body>
+	<!-- LOADER -->
+	<div id="preloader">
+		<img class="preloader" th:src="@{/WebAssets/images/loader.gif}" alt="" />
+	</div>
+	<!-- end loader -->
+	<!-- END LOADER -->
+
+	<div id="wrapper">
+
+		<header th:replace="~{fragments/header :: header}"></header>
+		<div class="page-title wb">
+            <div class="container">
+                <div th:if="${categoryItem != null}" class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <h2 th:text="${categoryItem.name}"></h2>
+                    </div><!-- end col -->
+                    <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                            <li class="breadcrumb-item active" th:text="${categoryItem.name}"></li>
+                        </ol>
+                    </div><!-- end col -->                    
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </div>
+        
+		<section class="section wb">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="page-wrapper">
+							<div class="portfolio row isotope d-flex flex-wrap"
+								style="position: relative; overflow: hidden; flex-wrap: wrap;">
+									<div  th:each="newsItem : ${news}" class="pitem item-w1 item-h1 isotope-item"
+										style="width: 380px; height: 375px; position: relative; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+										<div class="blog-box">
+											<div class="post-media">
+												<img class="img-fluid"
+													th:src="@{'/uploads/'+${newsItem.thumbnail}}" alt="Thumbnail">
+												<div class="hovereffect">
+													<span></span>
+												</div>
+												<!-- end hover -->
+											</div>
+											<!-- end media -->
+											<div class="blog-meta">
+												<span class="bg-grey"><a th:field="*{newsSlug}"
+													th:href="@{'/post/' + ${newsItem.slug}}"
+													title="" th:text="${newsItem.category.name}"></a></span>
+												<h4>
+													<a
+														th:href="@{'/post/' + ${newsItem.slug}}"
+														title="" th:text="${newsItem.title}"></a>
+												</h4>
+												<small><a href="blog-author.html" title=""
+													th:text="'By: '+${newsItem.createdBy}"></a></small> <small
+													th:text="${newsItem.createdDate}"></small>
+											</div>
+											<!-- end meta -->
+										</div>
+										<!-- end blog-box -->
+									</div>
+								<!-- end col -->
+							</div>
+							<!-- end portfolio -->
+						</div>
+						<!-- end page-wrapper -->
+
+						<hr class="invis">
+
+						<div class="row">
+							<div class="col-md-12">
+								<nav aria-label="Page navigation">
+									<ul class="pagination justify-content-start">
+										<li class="page-item"><a class="page-link" href="#">1</a></li>
+										<li class="page-item"><a class="page-link" href="#">2</a></li>
+										<li class="page-item"><a class="page-link" href="#">3</a></li>
+										<li class="page-item"><a class="page-link" href="#">Next</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+					</div>
+					<!-- end col -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</section>
+
+		<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+		<button class="dmtop">Scroll to Top</button>
+
+	</div>
+	<!-- end wrapper -->
+
+	<!-- Core JavaScript
+	    ================================================== -->
+	<div th:replace="~{fragments/scripts :: scripts}"></div>
+	<div id="fb-root"></div>
+
+</body>
+</html>
