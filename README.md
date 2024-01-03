@@ -1,5 +1,5 @@
 # WebBlogJavaSpringBootVersion1.0
-Web Blog Use Java language and Spring Boot Framework 
+Web Blog Use Java language and Spring Boot Framework, Thymeleaf
 ![image](https://github.com/15NgocAnh/WebBlogJavaSpringBootVersion1.0/assets/91924991/b97b2fb3-db82-437a-88cd-9b532b77cae0)
 ![image](https://github.com/15NgocAnh/WebBlogJavaSpringBootVersion1.0/assets/91924991/96964262-410c-416d-854b-0e427dddc7b8)
 ![image](https://github.com/15NgocAnh/WebBlogJavaSpringBootVersion1.0/assets/91924991/0412317c-e6d8-48a8-b4fe-48e891ea3bd1)
